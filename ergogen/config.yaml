@@ -108,19 +108,6 @@ points:
         rotate: hand_rotation
         shift: [100, -100] # Fix KiCad placement
       columns:
-        outer:
-          key:
-            column_net: C0
-          rows:
-            top.key:
-              led_prev: LED_18
-              led_next: LED_19
-            home.key:
-              led_prev: LED_19
-              led_next: LED_20
-            bottom.key:
-              led_prev: LED_20
-              led_next: LED_21
         pinky:
           key:
             column_net: C1
@@ -515,7 +502,7 @@ outlines:
   _matrix_outline:
     - what: polygon
       points:
-        - ref: matrix_outer_top
+        - ref: matrix_pinky_top
           shift: [-ks * 0.47 +0.01, kp * 0.475 -0.015]
         - ref: matrix_ring_top
           shift: [-ks * 0.47 +0.01, kp * 0.225 -0.014]
@@ -542,7 +529,7 @@ outlines:
         - ref: plate_outline_bottom_3
         - ref: plate_outline_bottom_2
         - ref: plate_outline_bottom_1
-        - ref: matrix_outer_bottom
+        - ref: matrix_pinky_bottom
           shift: [-ks * 0.47 +0.012, -kp * 0.485 -0.025]
   _plate_outline:
     - what: outline
@@ -836,90 +823,6 @@ pcbs:
         adjust:
           shift: [0, -0.65 kp]
   
-  corney_island:
-    template: kicad8
-
-    outlines:
-      <<: *basepcb_outlines
-        
-    footprints:
-      <<: *basepcb_footprints
-
-      display:
-        what: ceoloide/display_ssd1306
-        where: matrix_inner_top
-        params:
-          reversible: true
-        adjust:
-          shift: [0.5 ks + 10.147, 0.375 kp -24.058]
-
-      reset_switch:
-        what: ceoloide/reset_switch_tht_top
-        where: matrix_inner_top
-        params:
-          from: GND
-          to: RST
-          reversible: true
-        adjust:
-          shift: [0.5 ks + 17.85, 0.375 kp -40.251]
-          rotate: 90
-
-      trrs:
-        what: ceoloide/trrs_pj320a
-        where: matrix_inner_top
-        params:
-          SL: GND
-          R2: DAT
-          TP: VCC # Tip and Ring 1 are joined together
-          reversible: true
-          symmetric: true
-        adjust:
-          shift: [0.5 ks +19.61, 0.375 kp -50.31]
-          rotate: -90
-          
-      per_key_leds:
-        what: ceoloide/led_sk6812mini-e
-        where: /key/
-        params:
-          P1: VCC
-          P2: "{{key.led_next}}" #DOUT
-          P3: GND
-          P4: "{{key.led_prev}}" #DIN
-          reversible: true
-          reverse_mount: true
-          include_traces_vias: true
-          via_size: via_size
-          via_drill: via_drill
-          include_keepout: false
-          include_courtyard: false
-          signal_trace_width: signal_trace_width
-          gnd_trace_width: gnd_trace_width
-          vcc_trace_width: pwr_trace_width
-        adjust:
-          shift: [led_pos_x, led_pos_y]
-          rotate: led_rotation
-      
-      underglow_leds:
-        what: ceoloide/led_sk6812mini-e
-        where: [underglow]
-        params:
-          P1: VCC
-          P2: "{{zone.key.dout}}" #DOUT
-          P3: GND
-          P4: "{{zone.key.din}}" #DIN
-          reversible: true
-          reverse_mount: false
-          include_traces_vias: true
-          via_size: via_size
-          via_drill: via_drill
-          include_keepout: false
-          include_courtyard: false
-          signal_trace_width: signal_trace_width
-          gnd_trace_width: gnd_trace_width
-          vcc_trace_width: pwr_trace_width
-        adjust:
-          rotate: 180
-
   corney_island_wireless:
     template: kicad8
     
