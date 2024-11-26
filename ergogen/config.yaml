@@ -8,7 +8,7 @@ meta:
   # footprint: &switch_footprint "ceoloide/switch_mx"
   footprint: &switch_footprint "ceoloide/switch_choc_v1_v2"
   switch:
-    # $extends: presets.mx
+    # $extends: presets.mx 
     $extends: presets.choc_v1
     # $extends: presets.choc_v2
 
@@ -22,8 +22,7 @@ presets:
     ky: u # spacing between key centers (Y-axis)
     ks: 19 # horizontal space between columns (default: 19)
     kp: 19 # vertical padding between keys (deafult: 19)
-    kq: 19
-    kw: 19
+    kb: 0
     kcow: 14 # key cutout hole width (cherry: 14, choc: 13.8)
     kcoh: 14 # key cutout hole height (cherry: 14, choc: 13.8)
     keycw: 18 # keycap width (cherry: 18, choc: 17.5)
@@ -42,8 +41,7 @@ presets:
     ky: cy # spacing between key centers (Y-axis)
     ks: 18 # horizontal space between columns (default: 19)
     kp: 17 # vertical padding between keys (deafult: 19)
-    kq: 19
-    kw: 19
+    kb: 2
     kcow: 14 # key cutout hole width (cherry, choc v2: 14, choc v1: 13.8)
     kcoh: 14 # key cutout hole height (cherry, choc v2: 14, choc v1: 13.8)
     keycw: 17.5 # keycap width (cherry: 18, choc: 17.5)
@@ -63,8 +61,6 @@ presets:
     ky: u # spacing between key centers (Y-axis)
     ks: 19 # horizontal space between columns (default: 19)
     kp: 19 # vertical padding between keys (deafult: 19)
-    kq: 19
-    kw: 19
     keycw: 18 # keycap width (cherry: 18, choc: 17.5)
     keych: 18 # keycap height (cherry: 18, choc: 16.5)
 
@@ -312,26 +308,27 @@ points:
         - helper
       anchor:
         - ref: matrix_ring_bottom
-          shift: [kq * 0.465 + 0.005, -kw * 0.74 + 0.07]
+          shift: [ks * 0.465 + 0.005, -(kp+kb) * 0.74 + 0.07]
     plate_outline_bottom_2:
       key.tags:
         - helper
       anchor:
         - ref: thumbfan_near_home
-          shift: [-kq * 0.47 - 0.01, -kw * 0.475 - 0.05]
+          shift: [-ks * 0.5 - 0.5 * kb, -(kp+kb) * 0.5 ]
+
     plate_outline_bottom_3:
       key.tags:
         - helper
       anchor: 
-        - ref: thumbfan_far_home
-          shift: [-kq * 0.725 - 0.028,kw * 0.475 - 0.009]
+        - ref: thumbfan_mid_home
+          shift: [ks * 0.5+ 0.5 * kb, -(kp+kb) * 0.5]
           affect: ['x','y']
     plate_outline_bottom_4:
       key.tags:
         - helper
       anchor: 
         - ref: thumbfan_far_home
-          shift: [-kq * 0.725 - 0.028,-kw * 0.48 + 0.023]
+          shift: [-ks * 0.5 - 0.5 * kb, -(kp+kb) * 0.5]
           affect: ['x','y']
 
     mcu_cover_top_left:
@@ -339,19 +336,19 @@ points:
         - helper
       anchor:
         - ref: matrix_inner_top
-          shift: [kq * 0.53 + 0.043,kw * 0.35 - 0.015]
+          shift: [(ks+kb) * 0.53 + 0.043, kp * 0.35 - 0.015]
     mcu_cover_top_right:
       key.tags:
         - helper
       anchor:
         - ref: mcu_cover_top_left
-          shift: [kq + 0.72,0]
+          shift: [ks + 0.72,0]
     mcu_cover_bottom_right:
       key.tags:
         - helper
       anchor:
         - ref: mcu_cover_top_right
-          shift: [0,-kw * 3.2 + 0.339]
+          shift: [0,-kp * 3.2 + 0.339]
           rotate: (splay_thumb_middle + splay_thumb_far) * 2
     mcu_cover_bottom_left:
       key.tags:
@@ -433,7 +430,7 @@ points:
         - screw
       anchor:
         - ref: matrix_inner_bottom
-          shift: [1.45 ks - 0.356, -0.6 ks +0.03]
+          shift: [1.45 ks - 0.356, -0.6 kp +0.03]
 
 outlines:
   _debug_points:
@@ -509,25 +506,25 @@ outlines:
     - what: polygon
       points:
         - ref: matrix_pinky_top
-          shift: [-kq * 0.47 +0.01, kw * 0.475 -0.015]
+          shift: [-ks * 0.47 +0.01, kp * 0.475 -0.015]
         - ref: matrix_ring_top
-          shift: [-kq * 0.47 +0.01, kw * 0.225 -0.014]
+          shift: [-ks * 0.47 +0.01, kp * 0.225 -0.014]
         - ref: matrix_ring_top
-          shift: [-kq * 0.47 +0.01, kw * 0.475 -0.015]
+          shift: [-ks * 0.47 +0.01, kp * 0.475 -0.015]
         - ref: matrix_middle_top
-          shift: [-kq * 0.47 +0.01, kw * 0.35 -0.015]
+          shift: [-ks * 0.47 +0.01, kp * 0.35 -0.015]
         - ref: matrix_middle_top
-          shift: [-kq * 0.47 +0.01, kw * 0.468 -0.005]
+          shift: [-ks * 0.47 +0.01, kp * 0.468 -0.005]
         - ref: matrix_middle_top
-          shift: [kq * 0.478, kw * 0.468 -0.005]
+          shift: [ks * 0.478, kp * 0.468 -0.005]
         - ref: matrix_middle_top
-          shift: [kq * 0.478, kw * 0.35 -0.015]
+          shift: [ks * 0.478, kp * 0.35 -0.015]
         - ref: matrix_index_top
-          shift: [kq * 0.478, kw * 0.475 -0.015]
+          shift: [ks * 0.478, kp * 0.475 -0.015]
         - ref: matrix_index_top
-          shift: [kq * 0.478, kw * 0.34 +0.052]
+          shift: [ks * 0.478, kp * 0.34 +0.052]
         - ref: matrix_inner_top
-          shift: [kq * 0.478, kw * 0.468 -0.005]
+          shift: [ks * 0.478, kp * 0.468 -0.005]
         - ref: plate_additional_outline_top
         - ref: plate_additional_outline_bottom_left
         - ref: plate_additional_outline_bottom_right
