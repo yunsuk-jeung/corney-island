@@ -5,11 +5,11 @@ meta:
   ref: &kb_ref "Corney Island v0.2"
   author: ceoloide
   url: &kb_url https://github.com/ceoloide/corney-island
-  footprint: &switch_footprint "ceoloide/switch_mx"
-  # footprint: &switch_footprint "ceoloide/switch_choc_v1_v2"
+  # footprint: &switch_footprint "ceoloide/switch_mx"
+  footprint: &switch_footprint "ceoloide/switch_choc_v1_v2"
   switch:
-    $extends: presets.mx
-    # $extends: presets.choc_v1
+    # $extends: presets.mx
+    $extends: presets.choc_v1
     # $extends: presets.choc_v2
 
 presets:
@@ -38,10 +38,10 @@ presets:
     # Key and keycap measures
     kx: cx # spacing between key centers (X-axis)
     ky: cy # spacing between key centers (Y-axis)
-    ks: 18.5 # horizontal space between columns (default: 19)
-    kp: 17.5 # vertical padding between keys (deafult: 19)
-    kcow: 13.8 # key cutout hole width (cherry, choc v2: 14, choc v1: 13.8)
-    kcoh: 13.8 # key cutout hole height (cherry, choc v2: 14, choc v1: 13.8)
+    ks: 18 # horizontal space between columns (default: 19)
+    kp: 17 # vertical padding between keys (deafult: 19)
+    kcow: 14 # key cutout hole width (cherry, choc v2: 14, choc v1: 13.8)
+    kcoh: 14 # key cutout hole height (cherry, choc v2: 14, choc v1: 13.8)
     keycw: 17.5 # keycap width (cherry: 18, choc: 17.5)
     keych: 16.5 # keycap height (cherry: 18, choc: 16.5)
     led_pos_x: 0 # Led X position relative to the switch center
@@ -744,7 +744,7 @@ pcbs:
           side: B
           reversible: false
           hotswap: true
-          include_silkscreen: false
+          # include_silkscreen: false
           from: "{{column_net}}"
           to: "{{colrow}}_B"
           # The following parameters are specific to choc_v1_v2
@@ -775,7 +775,7 @@ pcbs:
           side: F
           reversible: false
           hotswap: true
-          include_silkscreen: false
+          # include_silkscreen: false
           from: "{{column_net}}"
           to: "{{colrow}}_F"
           # The following parameters are specific to choc_v1_v2
