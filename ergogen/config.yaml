@@ -197,12 +197,14 @@ points:
           - key
           - thumb_key
       anchor:
-        ref: matrix_middle_bottom
-        shift: [0.5 ks, -kp -3]
+        ref: matrix_inner_bottom
+        shift: [-1.2kx, -1.2 ky]
       columns:
         near:
           key:
             column_net: C3
+            spread: kx
+            origin: [-0.5 kx, -0.5 ky]
           rows:
             home.key:
               led_prev: LED_8
@@ -210,9 +212,9 @@ points:
         mid:
           key:
             splay: -splay_thumb_middle
+            origin: [-0.5 kx, -0.5 ky]
             column_net: C4
-            stagger: -2.750
-            spread: ks + 2
+            spread: ks
           rows:
             home.key:
               led_prev: LED_7
@@ -220,14 +222,13 @@ points:
         far:
           key:
             splay: -splay_thumb_far
-            rotate: 90
             column_net: C5
-            stagger: 2.122
-            spread: ks + 3.463
+            origin: [-0.5 kx, -0.5 ky]
+            spread: ks
             tags:
               - key
               - thumb_key
-              - key_1_5u
+              # - key_1_5u
           rows:
             home.key:
               led_prev: ULED_6
@@ -307,8 +308,10 @@ points:
       key.tags:
         - helper
       anchor:
-        - ref: matrix_ring_bottom
-          shift: [ks * 0.465 + 0.005, -(kp+kb) * 0.74 + 0.07]
+        # - ref: matrix_ring_bottom
+        #   shift: [ks * 0.465 + 0.005, -(kp+kb) * 0.74 + 0.07]
+        - ref: matrix_pinky_bottom
+          shift: [ks * 1.465 + 0.005, -(kp+kb) * 0.5]
     plate_outline_bottom_2:
       key.tags:
         - helper
@@ -320,15 +323,15 @@ points:
       key.tags:
         - helper
       anchor: 
-        - ref: thumbfan_mid_home
-          shift: [ks * 0.5+ 0.5 * kb, -(kp+kb) * 0.5]
+        - ref: thumbfan_far_home
+          shift: [0.5(ks+kb), -(kp+kb) * 0.5]
           affect: ['x','y']
     plate_outline_bottom_4:
       key.tags:
         - helper
       anchor: 
         - ref: thumbfan_far_home
-          shift: [-ks * 0.5 - 0.5 * kb, -(kp+kb) * 0.5]
+          shift: [0.5(ks+kb), (kp+kb) * 0.5]
           affect: ['x','y']
 
     mcu_cover_top_left:
@@ -336,7 +339,7 @@ points:
         - helper
       anchor:
         - ref: matrix_inner_top
-          shift: [(ks+kb) * 0.53 + 0.043, kp * 0.35 - 0.015]
+          shift: [(ks) * 0.5 + 1.03, kp * 0.35 - 0.015]
     mcu_cover_top_right:
       key.tags:
         - helper
@@ -433,39 +436,39 @@ points:
           shift: [1.45 ks - 0.356, -0.6 kp +0.03]
 
 outlines:
-  _debug_points:
-    - what: rectangle
-      where: true
-      size: [6,0.01]
-    - what: rectangle
-      where: true
-      size: [0.01,4]
-    - what: circle
-      where: true
-      radius: 0.4
-      adjust:
-        shift: [3,0]
-    - what: circle
-      where: true
-      radius: 0.4
-      adjust:
-        shift: [0,2]
-    - what: rectangle
-      where: [key]
-      size: [kx, ky]
-      operation: stack
-    - what: rectangle
-      where: [key_1_5u]
-      size: [kx*1.5, ky]
-      operation: stack
-    - what: rectangle
-      where: /key/
-      size: [kcow, kcoh]
-      operation: stack
-    - what: circle
-      where: [screw]
-      radius: 2
-      operation: stack
+  # _debug_points:
+  #   - what: rectangle
+  #     where: true
+  #     size: [6,0.01]
+  #   - what: rectangle
+  #     where: true
+  #     size: [0.01,4]
+  #   - what: circle
+  #     where: true
+  #     radius: 0.4
+  #     adjust:
+  #       shift: [3,0]
+  #   - what: circle
+  #     where: true
+  #     radius: 0.4
+  #     adjust:
+  #       shift: [0,2]
+  #   - what: rectangle
+  #     where: [key]
+  #     size: [kx, ky]
+  #     operation: stack
+  #   - what: rectangle
+  #     where: [key_1_5u]
+  #     size: [kx, ky]
+  #     operation: stack
+  #   - what: rectangle
+  #     where: /key/
+  #     size: [kcow, kcoh]
+  #     operation: stack
+  #   - what: circle
+  #     where: [screw]
+  #     radius: 2
+  #     operation: stack
   _keycap_outlines:
     - what: rectangle
       fillet: 2
@@ -474,23 +477,23 @@ outlines:
     - what: rectangle
       fillet: 2
       where: [key_1_5u]
-      size: [keycw*1.5, keych]
-  _hex_outline:
-    - what: rectangle
-      where: [key]
-      size: [9.2376,16]
-      adjust:
-        rotate: 0
-    - what: rectangle
-      where: [key]
-      size: [9.2376,16]
-      adjust:
-        rotate: 60
-    - what: rectangle
-      where: [key]
-      size: [9.2376,16]
-      adjust:
-        rotate: -60
+      size: [keycw, keych]
+  # _hex_outline:
+  #   - what: rectangle
+  #     where: [key]
+  #     size: [9.2376,16]
+  #     adjust:
+  #       rotate: 0
+  #   - what: rectangle
+  #     where: [key]
+  #     size: [9.2376,16]
+  #     adjust:
+  #       rotate: 60
+  #   - what: rectangle
+  #     where: [key]
+  #     size: [9.2376,16]
+  #     adjust:
+  #       rotate: -60
   _switch_cutouts:
     - what: rectangle
       where: /key/
@@ -506,25 +509,25 @@ outlines:
     - what: polygon
       points:
         - ref: matrix_pinky_top
-          shift: [-ks * 0.47 +0.01, kp * 0.475 -0.015]
+          shift: [-(0.5ks  ), (kp+kb) * 0.5]
+        - ref: matrix_pinky_top
+          shift: [(0.5ks ), (kp+kb) * 0.5]
         - ref: matrix_ring_top
-          shift: [-ks * 0.47 +0.01, kp * 0.225 -0.014]
+          shift: [-(0.5ks ), (kp+kb) * 0.5]
         - ref: matrix_ring_top
-          shift: [-ks * 0.47 +0.01, kp * 0.475 -0.015]
+          shift: [(0.5ks ), (kp+kb) * 0.5]
         - ref: matrix_middle_top
-          shift: [-ks * 0.47 +0.01, kp * 0.35 -0.015]
+          shift: [-(0.5ks ), (kp+kb) * 0.5]
         - ref: matrix_middle_top
-          shift: [-ks * 0.47 +0.01, kp * 0.468 -0.005]
-        - ref: matrix_middle_top
-          shift: [ks * 0.478, kp * 0.468 -0.005]
-        - ref: matrix_middle_top
-          shift: [ks * 0.478, kp * 0.35 -0.015]
+          shift: [(0.5ks ), (kp+kb) * 0.5]
         - ref: matrix_index_top
-          shift: [ks * 0.478, kp * 0.475 -0.015]
+          shift: [-(0.5ks ), (kp+kb) * 0.5]
         - ref: matrix_index_top
-          shift: [ks * 0.478, kp * 0.34 +0.052]
+          shift: [(0.5ks ), (kp+kb) * 0.5]
         - ref: matrix_inner_top
-          shift: [ks * 0.478, kp * 0.468 -0.005]
+          shift: [-(0.5ks ), (kp+kb) * 0.5]
+        - ref: matrix_inner_top
+          shift: [(0.5 ks), (kp+kb) * 0.5]
         - ref: plate_additional_outline_top
         - ref: plate_additional_outline_bottom_left
         - ref: plate_additional_outline_bottom_right
@@ -533,7 +536,7 @@ outlines:
         - ref: plate_outline_bottom_2
         - ref: plate_outline_bottom_1
         - ref: matrix_pinky_bottom
-          shift: [-ks * 0.47 +0.012, -kp * 0.485 -0.025]
+          shift: [-0.5(ks ), -kp * 0.5 - 0.5 kb]
   _plate_outline:
     - what: outline
       name: _matrix_outline
@@ -640,11 +643,11 @@ outlines:
       name: _controller_overlay_screws
       operation: subtract
   preview:
-    - what: outline
-      name: backplate
+    # - what: outline
+    #   name: backplate
     - what: outline
       name: pcb
-      operation: stack
+      # operation: stack
     - what: outline
       name: frontplate
       operation: stack
@@ -660,9 +663,9 @@ outlines:
     - what: outline
       name: _bottom_case_outer_outline
       operation: stack
-    - what: outline
-      name: _bottom_case_superlight_inner_outline
-      operation: stack
+    # - what: outline
+    #   name: _bottom_case_superlight_inner_outline
+    #   operation: stack
 
 pcbs:
   backplate:
