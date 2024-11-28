@@ -391,7 +391,7 @@ points:
             parts:
               - ref: plate_additional_outline_top
               - ref: plate_additional_outline_bottom_right
-
+  
     screw_pcb_left_top:
       key.tags:
         - helper
@@ -441,6 +441,23 @@ points:
       anchor:
         - ref: matrix_inner_bottom
           shift: [1.45 ks - 0.356, -0.6 kp +0.03]
+
+    # test2:
+    #   key.tags:
+    #     - helper
+    #   anchor:
+    #     - ref: plate_outline_bottom_4
+    #       shift: [0,0]
+    #       rotate: -30
+    # test_pt:
+    #   key.tags:
+    #     - helper
+    #   anchor:
+    #     - aggregate:
+    #         method: intersect
+    #         parts:
+    #           - ref: test2
+    #           - ref: mcu_cover_top_right          
 
 outlines:
   
@@ -876,3 +893,5 @@ cases:
       extrude: bottom_plate_thickness
       shift: [-75, 0, 0]
       operation: subtract
+
+

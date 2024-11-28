@@ -89,3 +89,4 @@ done
 # Docker runs as root and causes issues with file ownership
 sudo chown $USER -R ergogen
 sudo chown $USER -R freerouting
+sudo chown $USER -R pcbs
