@@ -333,13 +333,21 @@ points:
         - ref: thumbfan_far_home
           shift: [0.5(ks+kb), (kp+kb) * 0.5]
           affect: ['x','y']
+    plate_outline_bottom_5:
+      key.tags:
+        - helper
+      anchor: 
+        - ref: thumbfan_far_home
+          shift: [-0.5(ks+kb), (kp+kb) * 0.5]
+          affect: ['x','y']
+
 
     mcu_cover_top_left:
       key.tags:
         - helper
       anchor:
         - ref: matrix_inner_top
-          shift: [(ks) * 0.5 + 1.03, kp * 0.35 - 0.015]
+          shift: [(ks) * 0.5 + 2+0.476+0.045, kp * 0.35 - 0.015]
     mcu_cover_top_right:
       key.tags:
         - helper
@@ -351,7 +359,7 @@ points:
         - helper
       anchor:
         - ref: mcu_cover_top_right
-          shift: [0,-kp * 3.2 + 0.339]
+          shift: [0,-kp * 3.2 + 0.339 - 6]
           rotate: (splay_thumb_middle + splay_thumb_far) * 2
     mcu_cover_bottom_left:
       key.tags:
@@ -368,13 +376,13 @@ points:
         - helper
       anchor:
         - ref: mcu_cover_top_left
-          shift: [-1.03,0]
+          shift: [-1.0,0]
     plate_additional_outline_bottom_right:
       key.tags:
         - helper
       anchor:
         - ref: mcu_cover_bottom_right
-          shift: [-0.63,0]
+          shift: [0,0]
     plate_additional_outline_bottom_left:
       key.tags:
         - helper
@@ -509,7 +517,7 @@ outlines:
     - what: polygon
       points:
         - ref: matrix_pinky_top
-          shift: [-(0.5ks  ), (kp+kb) * 0.5]
+          shift: [-0.5(ks+kb  ), (kp+kb) * 0.5]
         - ref: matrix_pinky_top
           shift: [(0.5ks ), (kp+kb) * 0.5]
         - ref: matrix_ring_top
@@ -527,16 +535,17 @@ outlines:
         - ref: matrix_inner_top
           shift: [-(0.5ks ), (kp+kb) * 0.5]
         - ref: matrix_inner_top
-          shift: [(0.5 ks), (kp+kb) * 0.5]
+          shift: [(0.5 ks +1+0.476), (kp+kb) * 0.5]
         - ref: plate_additional_outline_top
         - ref: plate_additional_outline_bottom_left
+        # - ref: plate_outline_bottom_5
         - ref: plate_additional_outline_bottom_right
         - ref: plate_outline_bottom_4
         - ref: plate_outline_bottom_3
         - ref: plate_outline_bottom_2
         - ref: plate_outline_bottom_1
         - ref: matrix_pinky_bottom
-          shift: [-0.5(ks ), -kp * 0.5 - 0.5 kb]
+          shift: [-0.5(ks+kb), -kp * 0.5 - 0.5 kb]
   _plate_outline:
     - what: outline
       name: _matrix_outline
