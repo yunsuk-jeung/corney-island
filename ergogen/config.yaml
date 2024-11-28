@@ -8,7 +8,7 @@ meta:
   # footprint: &switch_footprint "ceoloide/switch_mx"
   footprint: &switch_footprint "ceoloide/switch_choc_v1_v2"
   switch:
-    # $extends: presets.mx 
+    # $extends: presets.mx
     $extends: presets.choc_v1
     # $extends: presets.choc_v2
 
@@ -49,7 +49,7 @@ presets:
     led_pos_x: 0 # Led X position relative to the switch center
     led_pos_y: 4.7 # Led Y position relative to the switch center
     led_rotation: 0 # Led rotation
-    vertical_underglow_shift: -kp + 7.8  # How much to shift underglow leds tied to keys
+    vertical_underglow_shift: -kp + 7.8 # How much to shift underglow leds tied to keys
     vertical_diode_shift: 1.5 # How much to shift to avoid overlap
     horizontal_diode_shift: -0.5 kcow - 0.85
     diode_rotation: -180 # Diode rotation
@@ -103,7 +103,7 @@ points:
       key:
         padding: kp
         spread: ks
-        tags: 
+        tags:
           - key
           - matrix_key
       anchor:
@@ -317,49 +317,48 @@ points:
         - helper
       anchor:
         - ref: thumbfan_near_home
-          shift: [-ks * 0.5 - 0.5 * kb, -(kp+kb) * 0.5 ]
+          shift: [-ks * 0.5 - 0.5 * kb, -(kp+kb) * 0.5]
 
     plate_outline_bottom_3:
       key.tags:
         - helper
-      anchor: 
+      anchor:
         - ref: thumbfan_far_home
           shift: [0.5(ks+kb), -(kp+kb) * 0.5]
-          affect: ['x','y']
+          affect: ["x", "y"]
     plate_outline_bottom_4:
       key.tags:
         - helper
-      anchor: 
+      anchor:
         - ref: thumbfan_far_home
           shift: [0.5(ks+kb), (kp+kb) * 0.5]
-          affect: ['x','y']
+          affect: ["x", "y"]
     plate_outline_bottom_5:
       key.tags:
         - helper
-      anchor: 
+      anchor:
         - ref: thumbfan_far_home
           shift: [-0.5(ks+kb), (kp+kb) * 0.5]
-          affect: ['x','y']
-
+          affect: ["x", "y"]
 
     mcu_cover_top_left:
       key.tags:
         - helper
       anchor:
         - ref: matrix_inner_top
-          shift: [(ks) * 0.5 + 2+0.476+0.045 + 1, kp * 0.35 - 0.015]
+          shift: [0.5ks + kb + 1 + 1 + 0.476 + 0.045, kp * 0.35 - 0.015]
     mcu_cover_top_right:
       key.tags:
         - helper
       anchor:
         - ref: mcu_cover_top_left
-          shift: [ks + 0.72,0]
+          shift: [ks + 0.72, 0]
     mcu_cover_bottom_right:
       key.tags:
         - helper
       anchor:
         - ref: mcu_cover_top_right
-          shift: [0,-kp * 3.2 + 0.339 - 6]
+          shift: [0, -kp * 3.2 + 0.339 - 6]
           rotate: (splay_thumb_middle + splay_thumb_far) * 2
     mcu_cover_bottom_left:
       key.tags:
@@ -376,13 +375,13 @@ points:
         - helper
       anchor:
         - ref: mcu_cover_top_left
-          shift: [-1.0,0]
+          shift: [-(1 + 2 + 0.476+0.045), 0]
     plate_additional_outline_bottom_right:
       key.tags:
         - helper
       anchor:
         - ref: mcu_cover_bottom_right
-          shift: [0,0]
+          shift: [0, 0]
     plate_additional_outline_bottom_left:
       key.tags:
         - helper
@@ -535,7 +534,7 @@ outlines:
         - ref: matrix_inner_top
           shift: [-(0.5ks ), (kp+kb) * 0.5]
         - ref: matrix_inner_top
-          shift: [(0.5 ks +1+0.476), (kp+kb) * 0.5]
+          shift: [0.5(ks +kb), (kp+kb) * 0.5]
         - ref: plate_additional_outline_top
         - ref: plate_additional_outline_bottom_left
         # - ref: plate_outline_bottom_5
@@ -581,7 +580,7 @@ outlines:
   _bottom_case_superlight_inner_outline:
     - what: outline
       name: _backplate_outline
-      expand:  -2 * case_wall_thickness
+      expand: -2 * case_wall_thickness
       fillet: 0.5
       joints: 1
   _bottom_case_outer_outline:
@@ -605,9 +604,13 @@ outlines:
   _mcu_wall_cutout:
     - what: rectangle
       where: matrix_inner_top
-      size: [8,40 + pcb_to_case_wall_tolerance * 2 + case_wall_thickness * 2]
+      size: [8, 40 + pcb_to_case_wall_tolerance * 2 + case_wall_thickness * 2]
       adjust:
-        shift: [19.704 - 1.25 + pcb_to_case_wall_tolerance / 2 + case_wall_thickness, 0]
+        shift:
+          [
+            19.704 - 1.25 + pcb_to_case_wall_tolerance / 2 + case_wall_thickness,
+            0,
+          ]
   backplate:
     - what: outline
       name: _backplate_outline
@@ -724,7 +727,7 @@ pcbs:
       # keycaps:
       #   outline: _keycap_outlines
       #   layer: Dwgs.User
-        
+
     footprints: &basepcb_footprints
       m2_screws:
         what: ceoloide/mounting_hole_npth
@@ -733,7 +736,7 @@ pcbs:
           hole_size: screw_diameter
           hole_drill: screw_diameter
       m2_spacers:
-        what: ceoloide/mounting_hole_npth 
+        what: ceoloide/mounting_hole_npth
         where: /screw_pcb/
         params:
           hole_size: spacer_diameter
@@ -767,7 +770,7 @@ pcbs:
           reversible: false
           side: B
         adjust:
-          shift: [horizontal_diode_shift,vertical_diode_shift]
+          shift: [horizontal_diode_shift, vertical_diode_shift]
           rotate: 90 + diode_rotation
 
       key_switches_f:
@@ -798,7 +801,7 @@ pcbs:
           reversible: false
           side: F
         adjust:
-          shift: [-1 * horizontal_diode_shift,vertical_diode_shift]
+          shift: [-1 * horizontal_diode_shift, vertical_diode_shift]
           rotate: 90 + diode_rotation
 
       mcu:
@@ -828,7 +831,7 @@ pcbs:
           use_rectangular_jumpers: true
         adjust:
           shift: [19.704, 0.375 kp -18.37]
-      
+
       jlcpcb_order_number_text:
         what: ceoloide/utility_text
         where: matrix_ring_bottom
@@ -837,16 +840,16 @@ pcbs:
           reversible: true
         adjust:
           shift: [0, -0.65 kp]
-  
+
   corney_island_wireless:
     template: kicad8
-    
+
     outlines:
       <<: *basepcb_outlines
-        
+
     footprints:
       <<: *basepcb_footprints
-      
+
       nice_view:
         what: ceoloide/display_nice_view
         where: matrix_inner_top
@@ -858,7 +861,7 @@ pcbs:
           invert_jumpers_position: true
         adjust:
           shift: [0.5 ks + 10.147, 0.375 kp -20.75]
-      
+
       on_off_switch:
         what: ceoloide/power_switch_smd_side
         where: matrix_inner_top
@@ -868,7 +871,7 @@ pcbs:
           reversible: true
         adjust:
           shift: [1.5 ks -0.5, 0.375 kp -46.50]
-      
+
       reset_switch:
         what: ceoloide/reset_switch_smd_side
         where: matrix_inner_top
@@ -879,8 +882,8 @@ pcbs:
           include_bosses: true
         adjust:
           shift: [19.704, 0.24 kp - 0.1]
-      
-      battery_connector:  
+
+      battery_connector:
         what: ceoloide/battery_connector_jst_ph_2
         where: matrix_inner_top
         params:
@@ -896,7 +899,7 @@ cases:
     - what: outline
       name: _bottom_case_walls
       extrude: bottom_plate_thickness + internal_distance_between_plates + top_plate_thickness
-      shift: [-75,0,0]
+      shift: [-75, 0, 0]
     - what: outline
       name: _mcu_wall_cutout
       extrude: 2.2
@@ -905,7 +908,7 @@ cases:
     - what: outline
       name: _bottom_case_outer_outline
       extrude: bottom_plate_thickness
-      shift: [-75,0,0]
+      shift: [-75, 0, 0]
     # - what: outline
     #   name: _bottom_case_superlight_inner_outline
     #   extrude: bottom_plate_thickness
@@ -919,5 +922,5 @@ cases:
     - what: outline
       name: _screws
       extrude: bottom_plate_thickness
-      shift: [-75,0,0]
+      shift: [-75, 0, 0]
       operation: subtract
