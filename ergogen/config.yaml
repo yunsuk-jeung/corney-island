@@ -50,8 +50,8 @@ presets:
     led_pos_y: 4.7 # Led Y position relative to the switch center
     led_rotation: 0 # Led rotation
     vertical_underglow_shift: -kp + 7.8 # How much to shift underglow leds tied to keys
-    vertical_diode_shift: -7.6 # How much to shift to avoid overlap
-    horizontal_diode_shift: -1.4
+    vertical_diode_shift: -5 # How much to shift to avoid overlap
+    horizontal_diode_shift: -0
     diode_rotation: 90 # Diode rotation
     switch_rotation: 0 # Hotswap south, led north
   choc_v2:
@@ -352,7 +352,7 @@ points:
         - helper
       anchor:
         - ref: mcu_cover_top_left
-          shift: [ks + 0.72, 0]
+          shift: [19, 0]
     mcu_cover_bottom_right:
       key.tags:
         - helper
@@ -468,7 +468,7 @@ outlines:
     - what: polygon
       points:
         - ref: matrix_pinky_top
-          shift: [-0.5(ks+kb+kb  ), (kp+kb) * 0.5]
+          shift: [-0.5(ks+kb  ), (kp+kb) * 0.5]
         - ref: matrix_pinky_top
           shift: [(0.5ks ), (kp+kb) * 0.5]
         - ref: matrix_ring_top
@@ -782,7 +782,7 @@ pcbs:
           show_instructions: false
           use_rectangular_jumpers: true
         adjust:
-          shift: [19.704, 0.375 kp -18.37]
+          shift: [21, 0.375 kp -18.37]
 
       jlcpcb_order_number_text:
         what: ceoloide/utility_text
