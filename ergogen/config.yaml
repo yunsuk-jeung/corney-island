@@ -53,7 +53,7 @@ presets:
     vertical_diode_shift: 1.5 # How much to shift to avoid overlap
     horizontal_diode_shift: -0.5 kcow - 0.85
     diode_rotation: -180 # Diode rotation
-    switch_rotation: 180 # Hotswap south, led north
+    switch_rotation: 0 # Hotswap south, led north
   choc_v2:
     # Key and keycap measures
     $extends: presets.choc_v1
@@ -411,22 +411,22 @@ points:
         - helper
         - screw
       anchor:
-        - ref: matrix_inner_top
-          shift: [-0.5 ks -0.032, -0.5 kp +1.139]
+        - ref: matrix_index_top
+          shift: [0.5 ks, -0.5 kp]
     screw_pcb_thumbfan_left:
       key.tags:
         - helper
         - screw
       anchor:
         - ref: thumbfan_near_home
-          shift: [-0.5 ks -4.343, kp * 0.375 +0.01]
+          shift: [-0.5 ks, 0.5 kp ]
     screw_pcb_thumbfan_right:
       key.tags:
         - helper
         - screw
       anchor:
-        - ref: thumbfan_far_home
-          shift: [0, 0.5 kp +2.631]
+        - ref: thumbfan_mid_home
+          shift: [0.5ks, 0.5 kp]
     screw_mcu_cover_left:
       key.tags:
         - helper
@@ -516,7 +516,7 @@ outlines:
     - what: polygon
       points:
         - ref: matrix_pinky_top
-          shift: [-0.5(ks+kb  ), (kp+kb) * 0.5]
+          shift: [-0.5(ks+kb+kb  ), (kp+kb) * 0.5]
         - ref: matrix_pinky_top
           shift: [(0.5ks ), (kp+kb) * 0.5]
         - ref: matrix_ring_top
@@ -534,7 +534,7 @@ outlines:
         - ref: matrix_inner_top
           shift: [-(0.5ks ), (kp+kb) * 0.5]
         - ref: matrix_inner_top
-          shift: [0.5(ks +kb), (kp+kb) * 0.5]
+          shift: [0.5(ks +kb+kb), (kp+kb) * 0.5]
         - ref: plate_additional_outline_top
         - ref: plate_additional_outline_bottom_left
         # - ref: plate_outline_bottom_5
@@ -753,8 +753,8 @@ pcbs:
           from: "{{column_net}}"
           to: "{{colrow}}_B"
           # The following parameters are specific to choc_v1_v2
-          outer_pad_width_front: 1.6
-          outer_pad_width_back: 1.6
+          # outer_pad_width_front: 1.6
+          # outer_pad_width_back: 1.6
           choc_v2_support: false
           # choc_v1_support: false
         adjust:
@@ -784,8 +784,8 @@ pcbs:
           from: "{{column_net}}"
           to: "{{colrow}}_F"
           # The following parameters are specific to choc_v1_v2
-          outer_pad_width_front: 1.6
-          outer_pad_width_back: 1.6
+          # outer_pad_width_front: 1.6
+          # outer_pad_width_back: 1.6
           choc_v2_support: false
           # choc_v1_support: false
         adjust:
