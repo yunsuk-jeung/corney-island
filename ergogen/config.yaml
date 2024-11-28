@@ -346,7 +346,7 @@ points:
         - helper
       anchor:
         - ref: matrix_inner_top
-          shift: [0.5ks + kb + 1 + 1 + 0.476 + 0.045, kp * 0.35 - 0.015]
+          shift: [0.5(ks +kb+kb)+ 1, kp * 0.35 - 0.015]
     mcu_cover_top_right:
       key.tags:
         - helper
@@ -375,7 +375,7 @@ points:
         - helper
       anchor:
         - ref: mcu_cover_top_left
-          shift: [-(1 + 2 + 0.476+0.045), 0]
+          shift: [-1, 0]
     plate_additional_outline_bottom_right:
       key.tags:
         - helper
@@ -443,39 +443,7 @@ points:
           shift: [1.45 ks - 0.356, -0.6 kp +0.03]
 
 outlines:
-  # _debug_points:
-  #   - what: rectangle
-  #     where: true
-  #     size: [6,0.01]
-  #   - what: rectangle
-  #     where: true
-  #     size: [0.01,4]
-  #   - what: circle
-  #     where: true
-  #     radius: 0.4
-  #     adjust:
-  #       shift: [3,0]
-  #   - what: circle
-  #     where: true
-  #     radius: 0.4
-  #     adjust:
-  #       shift: [0,2]
-  #   - what: rectangle
-  #     where: [key]
-  #     size: [kx, ky]
-  #     operation: stack
-  #   - what: rectangle
-  #     where: [key_1_5u]
-  #     size: [kx, ky]
-  #     operation: stack
-  #   - what: rectangle
-  #     where: /key/
-  #     size: [kcow, kcoh]
-  #     operation: stack
-  #   - what: circle
-  #     where: [screw]
-  #     radius: 2
-  #     operation: stack
+  
   _keycap_outlines:
     - what: rectangle
       fillet: 2
@@ -485,22 +453,6 @@ outlines:
       fillet: 2
       where: [key_1_5u]
       size: [keycw, keych]
-  # _hex_outline:
-  #   - what: rectangle
-  #     where: [key]
-  #     size: [9.2376,16]
-  #     adjust:
-  #       rotate: 0
-  #   - what: rectangle
-  #     where: [key]
-  #     size: [9.2376,16]
-  #     adjust:
-  #       rotate: 60
-  #   - what: rectangle
-  #     where: [key]
-  #     size: [9.2376,16]
-  #     adjust:
-  #       rotate: -60
   _switch_cutouts:
     - what: rectangle
       where: /key/
