@@ -347,7 +347,7 @@ points:
         - helper
       anchor:
         - ref: matrix_inner_top
-          shift: [(ks) * 0.5 + 2+0.476+0.045, kp * 0.35 - 0.015]
+          shift: [(ks) * 0.5 + 2+0.476+0.045 + 1, kp * 0.35 - 0.015]
     mcu_cover_top_right:
       key.tags:
         - helper
@@ -750,9 +750,9 @@ pcbs:
           from: "{{column_net}}"
           to: "{{colrow}}_B"
           # The following parameters are specific to choc_v1_v2
-          # outer_pad_width_front: 1.6
-          # outer_pad_width_back: 1.6
-          # choc_v2_support: false
+          outer_pad_width_front: 1.6
+          outer_pad_width_back: 1.6
+          choc_v2_support: false
           # choc_v1_support: false
         adjust:
           rotate: switch_rotation
@@ -781,9 +781,9 @@ pcbs:
           from: "{{column_net}}"
           to: "{{colrow}}_F"
           # The following parameters are specific to choc_v1_v2
-          # outer_pad_width_front: 1.6
-          # outer_pad_width_back: 1.6
-          # choc_v2_support: false
+          outer_pad_width_front: 1.6
+          outer_pad_width_back: 1.6
+          choc_v2_support: false
           # choc_v1_support: false
         adjust:
           rotate: switch_rotation
