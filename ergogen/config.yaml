@@ -86,7 +86,7 @@ units:
   via_drill: 0.3 # JLCPCB min 0.3 | KiCad default 0.4
 
   # Case variables
-  case_wall_thickness: 1.2
+  case_wall_thickness: 2.4
   pcb_to_case_wall_tolerance: 0.25
   bottom_plate_thickness: 1.0
   top_plate_thickness: 1.6
@@ -341,47 +341,41 @@ points:
           shift: [-0.5(ks+kb), (kp+kb) * 0.5]
           affect: ["x", "y"]
 
-    mcu_cover_top_left:
+    plate_additional_outline_top:
       key.tags:
         - helper
       anchor:
         - ref: matrix_inner_top
-          shift: [0.5(ks +kb+kb)+ 1, kp * 0.35 - 0.015]
-    mcu_cover_top_right:
+          shift: [0.5(ks+kb), 0.5 ks - 0.25 kp]
+    plate_additional_outline_top_right:
       key.tags:
         - helper
       anchor:
-        - ref: mcu_cover_top_left
-          shift: [19, 0]
-    mcu_cover_bottom_right:
+        - ref: plate_additional_outline_top
+          shift: [22, 0]
+    temp_help1:
       key.tags:
         - helper
       anchor:
-        - ref: mcu_cover_top_right
-          shift: [0, -kp * 3.2 + 0.339 - 6]
-          rotate: (splay_thumb_middle + splay_thumb_far) * 2
-    mcu_cover_bottom_left:
+        - ref: plate_outline_bottom_4
+          shift: [0,0]
+          rotate: -30
+    temp_help2:
       key.tags:
         - helper
       anchor:
         - aggregate:
             method: intersect
             parts:
-              - ref: mcu_cover_top_left
-              - ref: mcu_cover_bottom_right
-
-    plate_additional_outline_top:
-      key.tags:
-        - helper
-      anchor:
-        - ref: mcu_cover_top_left
-          shift: [-1, 0]
+              - ref: temp_help1
+              - ref: plate_additional_outline_top_right    
     plate_additional_outline_bottom_right:
       key.tags:
         - helper
       anchor:
-        - ref: mcu_cover_bottom_right
-          shift: [0, 0]
+        - ref: temp_help2
+          shift: [0,0]
+          rotate: (splay_thumb_middle + splay_thumb_far) * 2
     plate_additional_outline_bottom_left:
       key.tags:
         - helper
@@ -392,6 +386,37 @@ points:
               - ref: plate_additional_outline_top
               - ref: plate_additional_outline_bottom_right
   
+
+    mcu_cover_top_left:
+      key.tags:
+        - helper
+      anchor:
+        - ref: plate_additional_outline_top
+          shift: [0, 0]
+    mcu_cover_top_right:
+      key.tags:
+        - helper
+      anchor:
+        - ref: plate_additional_outline_top_right
+          shift: [0, 0]
+    mcu_cover_bottom_right:
+      key.tags:
+        - helper
+      anchor:
+        - ref: plate_additional_outline_bottom_right
+          shift: [0,0]
+          
+    mcu_cover_bottom_left:
+      key.tags:
+        - helper
+      anchor:
+        - aggregate:
+            method: intersect
+            parts:
+              - ref: mcu_cover_top_left
+              - ref: mcu_cover_bottom_right
+
+
     screw_pcb_left_top:
       key.tags:
         - helper
@@ -433,14 +458,14 @@ points:
         - screw
       anchor:
         - ref: matrix_inner_bottom
-          shift: [0.67 ks + 0.032, -0.15 kp -0.001]
+          shift: [13 , -9.825]
     screw_mcu_cover_right:
       key.tags:
         - helper
         - screw
       anchor:
         - ref: matrix_inner_bottom
-          shift: [1.45 ks - 0.356, -0.6 kp +0.03]
+          shift: [29, -18.725]
 
     # test2:
     #   key.tags:
@@ -460,7 +485,12 @@ points:
     #           - ref: mcu_cover_top_right          
 
 outlines:
-  
+  raw:
+    - what: rectangle
+      where: [key]
+      asym: source
+      size: [kx + kb, ky + kb]
+      corner: 1
   _keycap_outlines:
     - what: rectangle
       fillet: 2
@@ -481,29 +511,29 @@ outlines:
         - ref: mcu_cover_top_right
         - ref: mcu_cover_bottom_right
         - ref: mcu_cover_bottom_left
-  _matrix_outline:
+  _matrix_outline1:
     - what: polygon
       points:
-        - ref: matrix_pinky_top
-          shift: [-0.5(ks+kb  ), (kp+kb) * 0.5]
-        - ref: matrix_pinky_top
-          shift: [(0.5ks ), (kp+kb) * 0.5]
-        - ref: matrix_ring_top
-          shift: [-(0.5ks ), (kp+kb) * 0.5]
-        - ref: matrix_ring_top
-          shift: [(0.5ks ), (kp+kb) * 0.5]
-        - ref: matrix_middle_top
-          shift: [-(0.5ks ), (kp+kb) * 0.5]
-        - ref: matrix_middle_top
-          shift: [(0.5ks ), (kp+kb) * 0.5]
-        - ref: matrix_index_top
-          shift: [-(0.5ks ), (kp+kb) * 0.5]
-        - ref: matrix_index_top
-          shift: [(0.5ks ), (kp+kb) * 0.5]
-        - ref: matrix_inner_top
-          shift: [-(0.5ks ), (kp+kb) * 0.5]
-        - ref: matrix_inner_top
-          shift: [0.5(ks +kb+kb), (kp+kb) * 0.5]
+        # - ref: matrix_pinky_top
+        #   shift: [-0.5(ks+kb  ), (kp+kb) * 0.5]
+        # - ref: matrix_pinky_top
+        #   shift: [(0.5ks ), (kp+kb) * 0.5]
+        # - ref: matrix_ring_top
+        #   shift: [-(0.5ks ), (kp+kb) * 0.5]
+        # - ref: matrix_ring_top
+        #   shift: [(0.5ks ), (kp+kb) * 0.5]
+        # - ref: matrix_middle_top
+        #   shift: [-(0.5ks ), (kp+kb) * 0.5]
+        # - ref: matrix_middle_top
+        #   shift: [(0.5ks ), (kp+kb) * 0.5]
+        # - ref: matrix_index_top
+        #   shift: [-(0.5ks ), (kp+kb) * 0.5]
+        # - ref: matrix_index_top
+        #   shift: [(0.5ks ), (kp+kb) * 0.5]
+        # - ref: matrix_inner_top
+        #   shift: [-(0.5ks ), (kp+kb) * 0.5]
+        # - ref: matrix_inner_top
+        #   shift: [0.5(ks +kb+kb), (kp+kb) * 0.5]
         - ref: plate_additional_outline_top
         - ref: plate_additional_outline_bottom_left
         # - ref: plate_outline_bottom_5
@@ -513,15 +543,19 @@ outlines:
         - ref: plate_outline_bottom_2
         - ref: plate_outline_bottom_1
         - ref: matrix_pinky_bottom
-          shift: [-0.5(ks+kb), -kp * 0.5 - 0.5 kb]
+          shift: [0, -kp * 0.5 - 0.5 kb]
+  _matrix_outline:
+    - "raw"
+    - "+_matrix_outline1"
+
   _plate_outline:
     - what: outline
       name: _matrix_outline
     - what: polygon
       points:
         - ref: plate_additional_outline_top
-        - ref: mcu_cover_top_right
-        - ref: mcu_cover_bottom_right
+        - ref: plate_additional_outline_top_right
+        # - ref: mcu_cover_bottom_right
         - ref: plate_additional_outline_bottom_right
         - ref: plate_additional_outline_bottom_left
   _screws:
@@ -638,12 +672,12 @@ outlines:
     - what: outline
       name: _keycap_outlines
       operation: stack
-    - what: outline
-      name: _bottom_case_walls
-      operation: stack
-    - what: outline
-      name: _bottom_case_outer_outline
-      operation: stack
+    # - what: outline
+    #   name: _bottom_case_walls
+    #   operation: stack
+    # - what: outline
+    #   name: _bottom_case_outer_outline
+    #   operation: stack
     # - what: outline
     #   name: _bottom_case_superlight_inner_outline
     #   operation: stack
@@ -799,7 +833,7 @@ pcbs:
           show_instructions: false
           use_rectangular_jumpers: true
         adjust:
-          shift: [21, 0.375 kp -18.37]
+          shift: [0.5(ks+kb) + 11 , 0.375 kp -18.37]
 
       jlcpcb_order_number_text:
         what: ceoloide/utility_text
@@ -820,37 +854,35 @@ pcbs:
       <<: *basepcb_footprints
 
       nice_view:
-        what: ceoloide/display_nice_view
+        what: ceoloide/display_ssd1306
         where: matrix_inner_top
         params:
-          MOSI: SDA
-          SCK: SCL
           reversible: true
           include_labels: false
           invert_jumpers_position: true
         adjust:
-          shift: [0.5 ks + 10.147, 0.375 kp -20.75]
+          shift: [0.5(ks+kb) + 11, 0.375 kp -24]
 
       on_off_switch:
         what: ceoloide/power_switch_smd_side
-        where: matrix_inner_top
+        where: plate_additional_outline_top_right
         params:
           from: BAT_P
           to: RAW
           reversible: true
         adjust:
-          shift: [1.5 ks -0.5, 0.375 kp -46.50]
+          shift: [-1.8, -39.5]
+          rotate: 0
 
       reset_switch:
-        what: ceoloide/reset_switch_smd_side
-        where: matrix_inner_top
+        what: reset_button
+        where: plate_additional_outline_top_right
         params:
           from: GND
           to: RST
-          reversible: true
-          include_bosses: true
         adjust:
-          shift: [19.704, 0.24 kp - 0.1]
+          shift: [-2.1, -50.5]
+          rotate: 90
 
       battery_connector:
         what: ceoloide/battery_connector_jst_ph_2
@@ -861,7 +893,7 @@ pcbs:
           reversible: true
           include_courtyard: false
         adjust:
-          shift: [0.5 ks + 7.25, 0.375 kp -45.25]
+          shift: [0.5(ks+kb) + 11, 0.375 kp -48.25]
           rotate: 90
 cases:
   corney_island_bottom_tray:
@@ -869,11 +901,11 @@ cases:
       name: _bottom_case_walls
       extrude: bottom_plate_thickness + internal_distance_between_plates + top_plate_thickness
       shift: [-75, 0, 0]
-    - what: outline
-      name: _mcu_wall_cutout
-      extrude: 2.2
-      shift: [-75, 0, bottom_plate_thickness]
-      operation: subtract
+    # - what: outline
+      # name: _mcu_wall_cutout
+      # extrude: 2.2
+      # shift: [-75, 0, bottom_plate_thickness]
+      # operation: subtract
     - what: outline
       name: _bottom_case_outer_outline
       extrude: bottom_plate_thickness
