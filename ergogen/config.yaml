@@ -125,7 +125,7 @@ points:
               led_next: LED_16
         ring:
           key:
-            stagger: 0.25 kp
+            stagger: 0.625 kp
             column_net: C2
           rows:
             top.key:
@@ -153,7 +153,7 @@ points:
               led_next: LED_10
         index:
           key:
-            stagger: -0.125 kp
+            stagger: -0.375 kp
             column_net: C4
           rows:
             top.key:
@@ -422,15 +422,15 @@ points:
         - helper
         - screw
       anchor:
-        - ref: matrix_ring_top
-          shift: [-0.5 ks, -0.5 kp]
+        - ref: matrix_pinky_top
+          shift: [0.5 ks, -0.5 kp]
     screw_pcb_left_bottom:
       key.tags:
         - helper
         - screw
       anchor:
-        - ref: matrix_ring_home
-          shift: [-0.5 ks, -0.5 kp]
+        - ref: matrix_pinky_home
+          shift: [0.5 ks, -0.5 kp]
     screw_pcb_right_top:
       key.tags:
         - helper
@@ -511,6 +511,7 @@ outlines:
         - ref: mcu_cover_top_right
         - ref: mcu_cover_bottom_right
         - ref: mcu_cover_bottom_left
+      fillet: 1
   _matrix_outline1:
     - what: polygon
       points:
@@ -544,6 +545,9 @@ outlines:
         - ref: plate_outline_bottom_1
         - ref: matrix_pinky_bottom
           shift: [0, -kp * 0.5 - 0.5 kb]
+        - ref: matrix_pinky_bottom
+          shift: [0, kp * 0.5 + 0.5 kb]
+      fillet: 1
   _matrix_outline:
     - "raw"
     - "+_matrix_outline1"
@@ -557,7 +561,9 @@ outlines:
         - ref: plate_additional_outline_top_right
         # - ref: mcu_cover_bottom_right
         - ref: plate_additional_outline_bottom_right
+        - ref: plate_outline_bottom_4
         - ref: plate_additional_outline_bottom_left
+      fillet: 1
   _screws:
     - what: circle
       where: /screw_pcb/
@@ -854,14 +860,14 @@ pcbs:
       <<: *basepcb_footprints
 
       nice_view:
-        what: ceoloide/display_ssd1306
+        what: ceoloide/display_nice_view
         where: matrix_inner_top
         params:
           reversible: true
           include_labels: false
           invert_jumpers_position: true
         adjust:
-          shift: [0.5(ks+kb) + 11, 0.375 kp -24]
+          shift: [0.5(ks+kb) + 11, 0.375 kp -22]
 
       on_off_switch:
         what: ceoloide/power_switch_smd_side
@@ -871,7 +877,7 @@ pcbs:
           to: RAW
           reversible: true
         adjust:
-          shift: [-1.8, -39.5]
+          shift: [-1.8, -50.5]
           rotate: 0
 
       reset_switch:
@@ -881,7 +887,7 @@ pcbs:
           from: GND
           to: RST
         adjust:
-          shift: [-2.1, -50.5]
+          shift: [-2.1, -39.5]
           rotate: 90
 
       battery_connector:
@@ -893,8 +899,8 @@ pcbs:
           reversible: true
           include_courtyard: false
         adjust:
-          shift: [0.5(ks+kb) + 11, 0.375 kp -48.25]
-          rotate: 90
+          shift: [0.5(ks+kb) + 15, 0.375 kp -48.25]
+          rotate: 270 
 cases:
   corney_island_bottom_tray:
     - what: outline
